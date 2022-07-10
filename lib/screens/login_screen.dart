@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:pmob_22/screens/home_screen.dart';
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -10,17 +12,20 @@ class LoginScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFF468189),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.0),
+        preferredSize: Size.fromHeight(100.0),
         child: AppBar(
           backgroundColor: Color(0xFF468189),
-          title: Text("ENTRAR",
-              style: TextStyle(fontSize: 40, color: Colors.white)),
+          title: Center(
+            child: Text("ENTRAR",
+                style: TextStyle(fontSize: 40, color: Colors.white)),
+          ),
               elevation: 0,
         ),
       ),
       body: SingleChildScrollView(
         child: Container(
           child: Card(
+                      margin: EdgeInsets.only( top: 0),
             color: Color(0xFF468189),
             child: Padding(
               padding: const EdgeInsets.all(50.0),
@@ -85,7 +90,13 @@ class LoginScreen extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => HomeScreen())
+                        );
+
+
+                      },
                       child: Text("Entrar"),
                     ),
                   ),
@@ -104,6 +115,7 @@ class LoginScreen extends StatelessWidget {
                       Text("Conecte com",
                           style: TextStyle(fontSize: 20, color: Colors.white)),
                     ],
+
                   ),
                   SizedBox(height: 10),
                   Column(
