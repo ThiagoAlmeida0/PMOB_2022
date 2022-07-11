@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pmob_22/screens/home_screen.dart';
-
+import 'package:pmob_22/widgets/buttons/icon_rounded_buttom.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -19,16 +19,16 @@ class LoginScreen extends StatelessWidget {
             child: Text("ENTRAR",
                 style: TextStyle(fontSize: 40, color: Colors.white)),
           ),
-              elevation: 0,
+          elevation: 0,
         ),
       ),
       body: SingleChildScrollView(
         child: Container(
           child: Card(
-                      margin: EdgeInsets.only( top: 0),
+            margin: EdgeInsets.only(top: 0),
             color: Color(0xFF468189),
             child: Padding(
-              padding: const EdgeInsets.all(50.0),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 30, left: 50, right: 50),
               child: Column(
                 children: [
                   Row(
@@ -91,11 +91,8 @@ class LoginScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                           )),
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => HomeScreen())
-                        );
-
-
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => HomeScreen()));
                       },
                       child: Text("Entrar"),
                     ),
@@ -108,14 +105,37 @@ class LoginScreen extends StatelessWidget {
                           style: TextStyle(fontSize: 20, color: Colors.white)),
                     ],
                   ),
-                  SizedBox( height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text("Conecte com",
                           style: TextStyle(fontSize: 20, color: Colors.white)),
                     ],
-
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconRoundedButtom(
+                          imagePath: "assets/images/glogo.png",
+                          onTap: () {},
+                        ),
+                        IconRoundedButtom(
+                          imagePath: "assets/images/logo.png",
+                          onTap: () {              
+                          },
+                        ),
+                      //  IconRoundedButtom(
+                         // imagePath: "assets/images/ret.png",
+                         // onTap: () {              
+                        //  },
+                     //   ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: 10),
                   Column(
