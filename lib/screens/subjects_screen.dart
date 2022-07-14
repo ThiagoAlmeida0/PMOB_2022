@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pmob_22/screens/math_matters.dart';
 
-import 'home_screen.dart';
-
 class SubjectsScreen extends StatefulWidget {
   const SubjectsScreen({Key? key}) : super(key: key);
 
@@ -82,10 +80,13 @@ class _SubjectsScreen extends State<SubjectsScreen> {
                       ),
                     ),
                   ),
-                  Text("Física",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0xFF353D49),
+                  Padding(
+                    padding: EdgeInsets.only(left: 58.0),
+                    child: Text("Física",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF353D49),
+                      ),
                     ),
                   ),
                 ],

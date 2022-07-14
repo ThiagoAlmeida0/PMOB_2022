@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:pmob_22/screens/forgotten_pass.dart';
 import 'package:pmob_22/screens/home_screen.dart';
 import 'package:pmob_22/widgets/buttons/icon_rounded_buttom.dart';
 
@@ -28,7 +29,8 @@ class LoginScreen extends StatelessWidget {
             margin: EdgeInsets.only(top: 0),
             color: Color(0xFF468189),
             child: Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 30, left: 50, right: 50),
+              padding: const EdgeInsets.only(
+                  top: 10.0, bottom: 30, left: 50, right: 50),
               child: Column(
                 children: [
                   Row(
@@ -76,8 +78,16 @@ class LoginScreen extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("   Esqueceu a senha? ",
-                          style: TextStyle(fontSize: 15, color: Colors.white)),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => ForgottenPassword()));
+                        },
+                        child: Text("   Esqueceu a senha? ",
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.white)),
+                      ),
                     ],
                   ),
                   SizedBox(height: 30),
@@ -126,14 +136,13 @@ class LoginScreen extends StatelessWidget {
                         ),
                         IconRoundedButtom(
                           imagePath: "assets/images/logo.png",
-                          onTap: () {              
-                          },
+                          onTap: () {},
                         ),
-                      //  IconRoundedButtom(
-                         // imagePath: "assets/images/ret.png",
-                         // onTap: () {              
-                        //  },
-                     //   ),
+                          IconRoundedButtom(
+                         imagePath: "assets/images/ret.png",
+                         onTap: () {
+                          },
+                          ),
                       ],
                     ),
                   ),

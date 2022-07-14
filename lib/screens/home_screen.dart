@@ -128,7 +128,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       child: Icon( // aqui é o icone
                         Icons.school_outlined, // o tipo do ícone
-                        size: 100, // o tamanho
+                        size: 100,
+                        color: Color(0xff477b72), // o tamanho
                       ),
                     ),
                     SizedBox(
