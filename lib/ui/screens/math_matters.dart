@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pmob_22/screens/question_screen.dart';
+import 'package:pmob_22/ui/screens/question_screen.dart';
+import 'package:pmob_22/utils/constants.dart';
 
 class MathMatters extends StatefulWidget {
   MathMatters({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class _MathMattersState extends State<MathMatters> {
   Widget build(BuildContext context) {
     return Scaffold( 
       appBar: AppBar(
-        backgroundColor: Color(0xFF468189),
+        backgroundColor: mainColor,
         title: Center(child: Text("Matemática")),
       ),
       body: Center(
@@ -37,7 +38,7 @@ class _MathMattersState extends State<MathMatters> {
               ),
 
               Divider(
-                color: Color(0xFF468189),
+                color: mainColor,
                 thickness: 2,
                 indent: 14,
                 endIndent: 14,
@@ -51,7 +52,7 @@ class _MathMattersState extends State<MathMatters> {
                 ),
               ),
               Divider(
-                color: Color(0xFF468189),
+                color: mainColor,
                 thickness: 2,
                 indent: 14,
                 endIndent: 14,
@@ -65,7 +66,7 @@ class _MathMattersState extends State<MathMatters> {
                 ),
               ),
               Divider(
-                color: Color(0xFF468189),
+                color: mainColor,
                 thickness: 2,
                 indent: 14,
                 endIndent: 14,
@@ -84,7 +85,7 @@ class _MathMattersState extends State<MathMatters> {
                 ),
               ),
               Divider(
-                color: Color(0xFF468189),
+                color: mainColor,
                 thickness: 2,
                 indent: 14,
                 endIndent: 14,
@@ -98,7 +99,7 @@ class _MathMattersState extends State<MathMatters> {
                 ),
               ),
               Divider(
-                color: Color(0xFF468189),
+                color: mainColor,
                 thickness: 2,
                 indent: 14,
                 endIndent: 14,
@@ -112,7 +113,7 @@ class _MathMattersState extends State<MathMatters> {
                 ),
               ),
               Divider(
-                color: Color(0xFF468189),
+                color: mainColor,
                 thickness: 2,
                 indent: 14,
                 endIndent: 14,
@@ -126,7 +127,7 @@ class _MathMattersState extends State<MathMatters> {
                 ),
               ),
               Divider(
-                color: Color(0xFF468189),
+                color: mainColor,
                 thickness: 2,
                 indent: 14,
                 endIndent: 14,
@@ -136,7 +137,7 @@ class _MathMattersState extends State<MathMatters> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xFF468189),
+          backgroundColor: mainColor,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),

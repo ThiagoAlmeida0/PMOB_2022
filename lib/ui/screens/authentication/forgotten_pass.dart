@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pmob_22/utils/constants.dart';
 
 class ForgottenPassword extends StatelessWidget {
   const ForgottenPassword({Key? key}) : super(key: key);
@@ -7,11 +8,11 @@ class ForgottenPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFF468189),
+      backgroundColor: mainColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0),
         child: AppBar(
-          backgroundColor: Color(0xFF468189),
+          backgroundColor: mainColor,
           title: Center(
             child: Text("ESQUECI A SENHA",
                 style: TextStyle(fontSize: 40, color: Colors.white)),
@@ -20,7 +21,7 @@ class ForgottenPassword extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Color(0xFF468189),
+        color: mainColor,
         child: Column(
           children: [
             Padding(
@@ -89,7 +90,7 @@ class ForgottenPassword extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.lock_outline,
-                    color: Colors.white,
+                    color: iconColor,
                   ),
                   Text("  E-mail",
                       style: TextStyle(fontSize: 20, color: Colors.white)),
