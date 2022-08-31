@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:pmob_22/screens/forgotten_pass.dart';
-import 'package:pmob_22/screens/home_screen.dart';
-import 'package:pmob_22/widgets/buttons/icon_rounded_buttom.dart';
+import 'package:pmob_22/ui/screens/authentication/forgotten_pass.dart';
+import 'package:pmob_22/ui/screens/home_screen.dart';
+import 'package:pmob_22/ui/widgets/buttons/icon_rounded_buttom.dart';
+import 'package:pmob_22/utils/constants.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -16,9 +16,9 @@ class LoginScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(100.0),
         child: AppBar(
           backgroundColor: Color(0xFF468189),
-          title: Center(
+          title: const Center(
             child: Text("ENTRAR",
-                style: TextStyle(fontSize: 40, color: Colors.white)),
+                style: TextStyle(fontSize: 40, color: textColor)),
           ),
           elevation: 0,
         ),
@@ -26,8 +26,8 @@ class LoginScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           child: Card(
-            margin: EdgeInsets.only(top: 0),
-            color: Color(0xFF468189),
+            margin: const EdgeInsets.only(top: 0),
+            color: mainColor,
             child: Padding(
               padding: const EdgeInsets.only(
                   top: 10.0, bottom: 30, left: 50, right: 50),
@@ -38,10 +38,10 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.mail_outline,
-                        color: Colors.white,
+                        color: iconColor,
                       ),
                       Text("  E-mail",
-                          style: TextStyle(fontSize: 20, color: Colors.white))
+                          style: TextStyle(fontSize: 20, color: textColor))
                     ],
                   ),
                   SizedBox(height: 5),
@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                       hintText: "Insira seu endereço de email aqui",
                       border: OutlineInputBorder(),
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: textFieldBackground,
                     ),
                   ),
                   SizedBox(height: 20),
@@ -59,10 +59,10 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.lock_outline_sharp,
-                        color: Colors.white,
+                        color: iconColor,
                       ),
                       Text("Insira sua senha aqui",
-                          style: TextStyle(fontSize: 20, color: Colors.white))
+                          style: TextStyle(fontSize: 20, color: textColor))
                     ],
                   ),
                   SizedBox(height: 5),
@@ -72,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                       hintText: "Insira sua senha aqui",
                       border: OutlineInputBorder(),
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: textFieldBackground,
                     ),
                   ),
                   Row(
@@ -86,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                         },
                         child: Text("   Esqueceu a senha? ",
                             style:
-                                TextStyle(fontSize: 15, color: Colors.white)),
+                                TextStyle(fontSize: 15, color: textColor)),
                       ),
                     ],
                   ),
@@ -112,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text("   - Ou -",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                          style: TextStyle(fontSize: 20, color: textColor)),
                     ],
                   ),
                   SizedBox(
@@ -122,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text("Conecte com",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                          style: TextStyle(fontSize: 20, color: textColor)),
                     ],
                   ),
                   Padding(
@@ -151,7 +151,7 @@ class LoginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text("Ainda não tem conta?",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                          style: TextStyle(fontSize: 20, color: textColor)),
                     ],
                   ),
                   SizedBox(height: 25),

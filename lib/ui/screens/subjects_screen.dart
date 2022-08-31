@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pmob_22/screens/math_matters.dart';
+import 'package:pmob_22/ui/screens/math_matters.dart';
+import 'package:pmob_22/utils/constants.dart';
 
 class SubjectsScreen extends StatefulWidget {
   const SubjectsScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _SubjectsScreen extends State<SubjectsScreen> {
     return Scaffold(
         backgroundColor: const Color(0xFFF7F7F2),
         appBar: AppBar(
-          backgroundColor: const Color(0xFF468189),
+          backgroundColor: mainColor,
           toolbarHeight: 80,
           title: Center(
             child: Text('Matérias',
@@ -40,28 +41,28 @@ class _SubjectsScreen extends State<SubjectsScreen> {
                     child: Container( // matematica
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        color: Color(0xFF77ACA2),
+                        color: subjectBackgroundColor,
                         ),
                       height: 89.0 ,
                       width: 107.0 ,
                       child: const Icon(
                         FontAwesomeIcons.squareRootVariable,
                         size: 40,
-                        color: Colors.white,
+                        color: iconColor,
                         ),
                       ),
                   ),
                   Container( //fisica
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: Color(0xFF77ACA2),
+                      color: subjectBackgroundColor,
                       ),
                     height: 89.0 ,
                     width: 107.0 ,
                     child: const Icon(
                       FontAwesomeIcons.atom, // deixar light
                       size: 50,
-                      color: Colors.white,
+                      color: iconColor,
                      
                       ),
                   ),
@@ -97,27 +98,27 @@ class _SubjectsScreen extends State<SubjectsScreen> {
                   Container(//quimica
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: Color(0xFF77ACA2),
+                      color: subjectBackgroundColor,
                         ),
                     height: 89.0 ,
                     width: 107.0 ,
                     child: const Icon(
                       FontAwesomeIcons.flaskVial,
                       size: 40,
-                      color: Colors.white,
+                      color: iconColor,
                     ),
                   ),
                   Container( //biologia
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: Color(0xFF77ACA2),
+                      color: subjectBackgroundColor,
                       ),
                     height: 89.0 ,
                     width: 107.0 ,
                     child: const Icon(
                       FontAwesomeIcons.dna,
                       size: 40,
-                      color: Colors.white,
+                      color: iconColor,
                       ),
                   ),
                 ], // children
@@ -146,27 +147,27 @@ class _SubjectsScreen extends State<SubjectsScreen> {
                   Container( //historia
                    decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    color: Color(0xFF77ACA2),
+                    color: subjectBackgroundColor,
                     ),
                   height: 89.0 ,
                   width: 107.0 ,
                   child: const Icon(
                     Icons.history_edu,
                     size: 60,
-                    color: Colors.white,
+                    color: iconColor,
                     ),
                   ),
                 Container( //geografia
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    color: Color(0xFF77ACA2),
+                    color: subjectBackgroundColor,
                     ),
                   height: 89.0 ,
                   width: 107.0 ,
                   child: const Icon(
                      FontAwesomeIcons.globe,
                     size: 40,
-                    color: Colors.white,
+                    color: iconColor,
                     ),     
                 ),
                 ],// children
@@ -195,27 +196,27 @@ class _SubjectsScreen extends State<SubjectsScreen> {
                   Container( // filosofia
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: Color(0xFF77ACA2),
+                      color: subjectBackgroundColor,
                       ),
                     height: 89.0 ,
                     width: 107.0 ,
                     child: const Icon(
                       FontAwesomeIcons.buildingColumns,
                       size: 40,
-                      color: Colors.white,
+                      color: iconColor,
                     ),
                   ),
                 Container(//sociologia
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    color: Color(0xFF77ACA2),
+                    color: subjectBackgroundColor,
                     ),
                   height: 89.0 ,
                   width: 107.0 ,
                   child: const Icon(
                      FontAwesomeIcons.peopleGroup,
                     size: 40,
-                    color: Colors.white,
+                    color: iconColor,
                     ),
                 ),
                 ],// children
@@ -242,7 +243,7 @@ class _SubjectsScreen extends State<SubjectsScreen> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: const Color(0xFF468189),
+          backgroundColor: mainColor,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
