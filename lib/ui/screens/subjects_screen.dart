@@ -35,8 +35,7 @@ class _SubjectsScreen extends State<SubjectsScreen> {
                 children: [
                   GestureDetector(
                     onTap: (){
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => MathMatters()));
+                     Navigator.of(context).pushNamed("/mathM");
                     },
                     child: Container( // matematica
                       decoration: const BoxDecoration(

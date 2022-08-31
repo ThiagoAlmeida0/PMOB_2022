@@ -3,7 +3,7 @@ import 'package:pmob_22/ui/screens/question_screen.dart';
 import 'package:pmob_22/utils/constants.dart';
 
 class MathMatters extends StatefulWidget {
-  MathMatters({Key? key}) : super(key: key);
+  const MathMatters({Key? key}) : super(key: key);
 
   @override
   _MathMattersState createState() => _MathMattersState();
@@ -24,8 +24,7 @@ class _MathMattersState extends State<MathMatters> {
             children: [
               GestureDetector(
                 onTap: (){            
-                  Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => QuestionScreen()));
+                  Navigator.of(context).pushNamed("/question");
                 },
                 child: ListTile(
                   title: Text ('Potenciação',

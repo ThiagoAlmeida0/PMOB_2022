@@ -76,8 +76,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                           )),
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SubjectsScreen()));
+                        Navigator.of(context).pushNamed("/subScreen");
                       },
                       child: Text(
                         "Matérias",
