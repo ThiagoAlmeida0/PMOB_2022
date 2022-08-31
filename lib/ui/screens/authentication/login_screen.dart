@@ -80,9 +80,7 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => ForgottenPassword()));
+                            Navigator.of(context).pushReplacementNamed("/login");
                         },
                         child: Text("   Esqueceu a senha? ",
                             style:
@@ -101,8 +99,7 @@ class LoginScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                           )),
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => HomeScreen()));
+                          Navigator.of(context).pushNamed("/fPass");
                       },
                       child: Text("Entrar"),
                     ),
