@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pmob_22/ui/screens/authentication/forgotten_pass.dart';
 import 'package:pmob_22/ui/screens/authentication/login_screen.dart';
-import 'package:pmob_22/ui/screens/home_screen.dart';
-import 'package:pmob_22/ui/screens/math_matters.dart';
-import 'package:pmob_22/ui/screens/question_screen.dart';
-import 'package:pmob_22/ui/screens/subjects_screen.dart';
+import 'package:pmob_22/ui/screens/home/home_screen.dart';
+import 'package:pmob_22/ui/screens/subject/subject.dart';
+import 'package:pmob_22/ui/screens/subject/math_matters.dart';
+import 'package:pmob_22/ui/screens/question/question_screen.dart';
 
 Map<String, WidgetBuilder> routes() {
   final Map< String,WidgetBuilder> routes = <String, WidgetBuilder>{};
