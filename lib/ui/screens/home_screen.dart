@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pmob_22/ui/screens/subjects_screen.dart';
 import 'package:pmob_22/utils/constants.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,25 +11,24 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: mainColor,
         appBar: AppBar(
           backgroundColor: mainColor,
-          title: Center(
+          toolbarHeight: 80,
+          title: const Center(
             child: Text("Tela Inicial",
                 style: TextStyle(fontSize: 30, color: textColor)),
           ),
           elevation: 0,
         ),
         body: Container(
-            width: double.infinity,
             color: Color(0xFFf7f7f2),
-            child: Column(
+            child: ListView(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 20.0,left: 180, right: 180),
                   child: Container(
                     height: 5,
-                    width: 30,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: Color(0xff77aca2),
+                      color: mainColor,
                     ),
                   ),
                 ),
@@ -38,12 +36,12 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Row(
                     children: [
-                      Container(
+                       SizedBox(
                         width: 250,
                         height: 100,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: const [
                             Text(
                               "   Olá,",
                               style: TextStyle(
@@ -56,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.account_circle,
                         size: 100,
                         color: homeIconColor,
@@ -65,20 +63,20 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 35.0),
+                  padding: const EdgeInsets.only(top: 35.0, left: 35.0, right: 35.0, bottom: 15.0),
                   child: SizedBox(
                     height: 70,
                     width: 320,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: ButtonColor,
+                          backgroundColor: ButtonColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           )),
                       onPressed: () {
                         Navigator.of(context).pushNamed("/subScreen");
                       },
-                      child: Text(
+                      child: const Text(
                         "Matérias",
                         style: TextStyle(fontSize: 40),
                       ),
@@ -88,8 +86,8 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
+                    const Padding(
+                      padding: EdgeInsets.only(
                         left: 50,
                         right: 17,
                       ),
@@ -101,15 +99,15 @@ class HomeScreen extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 70,
-                      width: 200,
+                      width: 190,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: ButtonColor2,
+                            backgroundColor: ButtonColor2,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
                             )),
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "Simulados",
                           style: TextStyle(fontSize: 30),
                         ),
@@ -117,44 +115,48 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 70,
-                  width: 320,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: ButtonColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        )),
-                    onPressed: () {},
-                    child: Text(
-                      "Análise de desempenho",
-                      style: TextStyle(fontSize: 25),
+                Padding(
+                  padding: const EdgeInsets.only(left: 35, right: 35, top: 15, bottom: 15),
+                  child: SizedBox(
+                    height: 70,
+                    width: 320,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: ButtonColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          )),
+                      onPressed: () {},
+                      child: const Text(
+                        "Análise de desempenho",
+                        style: TextStyle(fontSize: 25),
+                      ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(top: 15, bottom: 10, left: 35, right: 35),
                   child: SizedBox(
                     height: 30,
                     width: 320,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: ButtonColor2,
+                          backgroundColor: ButtonColor2,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           )),
                       onPressed: () {},
-                      child: Text("Meus dados pessoais"),
+                      child: const Text("Meus dados pessoais"),
                     ),
                   ),
                 ),
-                Icon(
+                const Icon(
                   Icons.menu_book_sharp,
                   size: 125,
                   color: homeIconColor,
                 )
               ],
-            )));
+            ))
+        );
   }
 }
