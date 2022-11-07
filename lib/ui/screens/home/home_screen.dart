@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                     width: 320,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: ButtonColor,
+                          primary: ButtonColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           )),
@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                       width: 190,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: ButtonColor2,
+                            primary: ButtonColor2,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
                             )),
@@ -122,7 +122,7 @@ class HomeScreen extends StatelessWidget {
                     width: 320,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: ButtonColor,
+                          primary: ButtonColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           )),
@@ -141,7 +141,7 @@ class HomeScreen extends StatelessWidget {
                     width: 320,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: ButtonColor2,
+                          primary: ButtonColor2,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           )),
