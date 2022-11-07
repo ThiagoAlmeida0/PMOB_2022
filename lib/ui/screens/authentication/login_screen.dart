@@ -158,7 +158,9 @@ class LoginScreen extends StatelessWidget {
               textColor: Colors.white,
               textSize: 15,
               buttonRouding: 50,
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed("/register");
+              },
             ),
           ),
         ],
