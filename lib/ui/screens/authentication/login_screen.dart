@@ -4,8 +4,18 @@ import 'package:pmob_22/utils/constants.dart';
 
 import '../../widgets/buttons/rounded_app_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +55,13 @@ class LoginScreen extends StatelessWidget {
           ),
           const SizedBox(height: 5),
            TextFormField(
+            validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo e-mail obrigatório';
+                  }
+                  return null;
+                },
+                controller: emailController,
             decoration: const InputDecoration(
               hintText: "Insira seu endereço de email aqui",
               border: OutlineInputBorder(),
@@ -66,6 +83,16 @@ class LoginScreen extends StatelessWidget {
           ),
           const SizedBox(height: 5),
            TextFormField(
+            validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo senha obrigatório';
+                  } else if (value.length < 6) {
+                    return 'Senha deve possuir no mínimo 6 dígitos';
+                  }
+
+                  return null;
+                },
+              controller: passwordController,
             obscureText: true,
             decoration: const InputDecoration(
               hintText: "Insira sua senha aqui",
@@ -97,7 +124,13 @@ class LoginScreen extends StatelessWidget {
               textSize: 20,
               buttonRouding: 50,
               onTap: () {
-                Navigator.of(context).pushNamed("/home");
+                if(passwordController == 12345678 && emailController == 'isa'){
+                  Navigator.of(context).pushNamed("/home");
+                }
+                else{
+                  print("Senha incorreta");
+                }
+                
               },
             ),
           ),
