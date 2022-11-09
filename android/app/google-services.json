@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "342082332251",
+    "project_id": "pmob-c5957",
+    "storage_bucket": "pmob-c5957.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342082332251:android:8087a483676666bba6c17e",
+        "android_client_info": {
+          "package_name": "com.example.pmob_22"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342082332251-5vp4uv0ot9a8mfcrchftdp1ssecoi13m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsSGBtNHVSQ8JVr-LzI0JDCfM7J4dWWuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "342082332251-5vp4uv0ot9a8mfcrchftdp1ssecoi13m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

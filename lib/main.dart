@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pmob_22/utils/routes.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp( const MyApp()
   );
 }
