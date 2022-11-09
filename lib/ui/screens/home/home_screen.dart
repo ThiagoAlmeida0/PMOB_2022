@@ -1,9 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pmob_22/utils/constants.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+   const HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +23,8 @@ class HomeScreen extends StatelessWidget {
             child: ListView(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0,left: 180, right: 180),
+                  padding:
+                      const EdgeInsets.only(top: 20.0, left: 180, right: 180),
                   child: Container(
                     height: 5,
                     decoration: BoxDecoration(
@@ -36,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Row(
                     children: [
-                       SizedBox(
+                      SizedBox(
                         width: 250,
                         height: 100,
                         child: Column(
@@ -63,7 +64,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 35.0, left: 35.0, right: 35.0, bottom: 15.0),
+                  padding: const EdgeInsets.only(
+                      top: 35.0, left: 35.0, right: 35.0, bottom: 15.0),
                   child: SizedBox(
                     height: 70,
                     width: 320,
@@ -116,7 +118,8 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 35, right: 35, top: 15, bottom: 15),
+                  padding: const EdgeInsets.only(
+                      left: 35, right: 35, top: 15, bottom: 15),
                   child: SizedBox(
                     height: 70,
                     width: 320,
@@ -135,7 +138,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 15, bottom: 10, left: 35, right: 35),
+                  padding: const EdgeInsets.only(
+                      top: 15, bottom: 10, left: 35, right: 35),
                   child: SizedBox(
                     height: 30,
                     width: 320,
@@ -156,7 +160,6 @@ class HomeScreen extends StatelessWidget {
                   color: homeIconColor,
                 )
               ],
-            ))
-        );
+            )));
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pmob_22/google_login.dart';
 import 'package:pmob_22/ui/widgets/buttons/icon_rounded_buttom.dart';
 import 'package:pmob_22/utils/constants.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/buttons/rounded_app_button.dart';
 
@@ -156,7 +158,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   IconRoundedButtom(
                     imagePath: "assets/images/glogo.png",
-                    onTap: () {},
+                    onTap: () {
+                      final provider = Provider.of<GoogelSignInProvider>(
+                          context,
+                          listen: false);
+                      provider.googleLogin(); 
+                    },
                   ),
                   IconRoundedButtom(
                     imagePath: "assets/images/logo.png",
