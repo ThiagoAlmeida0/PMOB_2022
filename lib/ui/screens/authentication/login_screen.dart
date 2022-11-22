@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pmob_22/ui/screens/home/home_screen.dart';
 import 'package:pmob_22/ui/widgets/buttons/icon_rounded_buttom.dart';
 import 'package:pmob_22/utils/constants.dart';
+import 'package:pmob_22/data/userDao.dart';
+
 
 import '../../widgets/buttons/rounded_app_button.dart';
 
@@ -40,165 +43,197 @@ class _LoginScreenState extends State<LoginScreen> {
     body: Padding(
       padding:
           const EdgeInsets.only(top: 10.0, bottom: 30, left: 50, right: 50),
-      child: ListView(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Icon(
-                Icons.mail_outline,
-                color: iconColor,
-              ),
-              Text("  E-mail",
-                  style: TextStyle(fontSize: 20, color: textColor))
-            ],
-          ),
-          const SizedBox(height: 5),
-           TextFormField(
-            validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo e-mail obrigatório';
-                  }
-                  return null;
-                },
-                controller: emailController,
-            decoration: const InputDecoration(
-              hintText: "Insira seu endereço de email aqui",
-              border: OutlineInputBorder(),
-              filled: true,
-              fillColor: textFieldBackground,
+      child: Form(
+        key: _formKey,
+        child: ListView(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Icon(
+                  Icons.mail_outline,
+                  color: iconColor,
+                ),
+                Text("  E-mail",
+                    style: TextStyle(fontSize: 20, color: textColor))
+              ],
             ),
-          ),
-          const SizedBox(height: 20),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Icon(
-                Icons.lock_outline_sharp,
-                color: iconColor,
+            const SizedBox(height: 5),
+             TextFormField(
+              validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Campo e-mail obrigatório';
+                    }
+                    return null;
+                  },
+                  controller: emailController,
+              decoration: const InputDecoration(
+                hintText: "Insira seu endereço de email aqui",
+                border: OutlineInputBorder(),
+                filled: true,
+                fillColor: textFieldBackground,
               ),
-              Text("Insira sua senha aqui",
-                  style: TextStyle(fontSize: 20, color: textColor))
-            ],
-          ),
-          const SizedBox(height: 5),
-           TextFormField(
-            validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo senha obrigatório';
-                  } else if (value.length < 6) {
-                    return 'Senha deve possuir no mínimo 6 dígitos';
-                  }
-
-                  return null;
-                },
-              controller: passwordController,
-            obscureText: true,
-            decoration: const InputDecoration(
-              hintText: "Insira sua senha aqui",
-              border: OutlineInputBorder(),
-              filled: true,
-              fillColor: textFieldBackground,
             ),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushReplacementNamed("/fPass");
-                },
-                child: const Text("   Esqueceu a senha? ",
-                    style: TextStyle(fontSize: 15, color: textColor)),
+            const SizedBox(height: 20),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Icon(
+                  Icons.lock_outline_sharp,
+                  color: iconColor,
+                ),
+                Text("Insira sua senha aqui",
+                    style: TextStyle(fontSize: 20, color: textColor))
+              ],
+            ),
+            const SizedBox(height: 5),
+             TextFormField(
+              validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Campo senha obrigatório';
+                    } else if (value.length < 6) {
+                      return 'Senha deve possuir no mínimo 6 dígitos';
+                    }
+      
+                    return null;
+                  },
+                controller: passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                hintText: "Insira sua senha aqui",
+                border: OutlineInputBorder(),
+                filled: true,
+                fillColor: textFieldBackground,
               ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 15.0, left: 55, right: 55),
-            child: RoundedAppButton(
-              buttonColor: ButtonColor,
-              buttonName: "Entrar",
-              height: 50,
-              width: 150,
-              textColor: Colors.white,
-              textSize: 20,
-              buttonRouding: 50,
-              onTap: () {
-                if(passwordController == 12345678 && emailController == 'isa'){
-                  Navigator.of(context).pushNamed("/home");
-                }
-                else{
-                  print("Senha incorreta");
-                }
-                
-              },
             ),
-          ),
-          const SizedBox(height: 25),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Text("   - Ou -",
-                  style: TextStyle(fontSize: 20, color: textColor)),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Text("Conecte com",
-                  style: TextStyle(fontSize: 20, color: textColor)),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconRoundedButtom(
-                  imagePath: "assets/images/glogo.png",
-                  onTap: () {},
-                ),
-                IconRoundedButtom(
-                  imagePath: "assets/images/logo.png",
-                  onTap: () {},
-                ),
-                IconRoundedButtom(
-                  imagePath: "assets/images/ret.png",
-                  onTap: () {},
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed("/fPass");
+                  },
+                  child: const Text("   Esqueceu a senha? ",
+                      style: TextStyle(fontSize: 15, color: textColor)),
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Text("Ainda não tem conta?",
-                  style: TextStyle(fontSize: 20, color: textColor)),
-            ],
-          ),
-          const SizedBox(height: 25),
-          Padding(
-            padding: const EdgeInsets.only(top: 15.0, left: 35, right: 35),
-            child: RoundedAppButton(
-              buttonColor: ButtonColor,
-              buttonName: "Crie uma conta",
-              height: 50,
-              width: 150,
-              textColor: Colors.white,
-              textSize: 15,
-              buttonRouding: 50,
-              onTap: () {
-                Navigator.of(context).pushReplacementNamed("/register");
-              },
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0, left: 55, right: 55),
+              child: RoundedAppButton(
+                buttonColor: ButtonColor,
+                buttonName: "Entrar",
+                height: 50,
+                width: 150,
+                textColor: Colors.white,
+                textSize: 20,
+                buttonRouding: 50,
+                onTap: onTap 
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 25),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Text("   - Ou -",
+                    style: TextStyle(fontSize: 20, color: textColor)),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Text("Conecte com",
+                    style: TextStyle(fontSize: 20, color: textColor)),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconRoundedButtom(
+                    imagePath: "assets/images/glogo.png",
+                    onTap: () {},
+                  ),
+                  IconRoundedButtom(
+                    imagePath: "assets/images/logo.png",
+                    onTap: () {},
+                  ),
+                  IconRoundedButtom(
+                    imagePath: "assets/images/ret.png",
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Text("Ainda não tem conta?",
+                    style: TextStyle(fontSize: 20, color: textColor)),
+              ],
+            ),
+            const SizedBox(height: 25),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0, left: 35, right: 35),
+              child: RoundedAppButton(
+                buttonColor: ButtonColor,
+                buttonName: "Crie uma conta",
+                height: 50,
+                width: 150,
+                textColor: Colors.white,
+                textSize: 15,
+                buttonRouding: 50,
+                onTap: () {
+                  Navigator.of(context).pushReplacementNamed("/register");
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     ),
   );
   }
+
+    showSnackBar(String msg) {
+    final snackBar = SnackBar(
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.symmetric(
+        vertical: 80,
+        horizontal: 32,
+      ),
+      content: Text(msg),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  onTap() async {
+    if (_formKey.currentState!.validate()) {
+      String userDigitado = emailController.text;
+      String passwordDigitado = passwordController.text;
+
+      bool resultado = await UserDao().autenticar(userDigitado, passwordDigitado);
+
+      if (resultado) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const HomeScreen();
+            },
+          ),
+        );
+      } else {
+        showSnackBar('Usuário/Senha incorretos');
+      }
+    } else {
+      showSnackBar("Erro na validação");
+    }
+  }
+
 }

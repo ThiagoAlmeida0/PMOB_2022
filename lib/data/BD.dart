@@ -19,9 +19,6 @@ class QuestoesBD{
       respostaCorreta: '', 
       resolucao: 'explicacao aqui'
       )
-
-
   ];
   
- 
 }
