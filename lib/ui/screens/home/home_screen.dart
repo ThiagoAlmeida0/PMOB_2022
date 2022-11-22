@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pmob_22/utils/constants.dart';
+import 'package:pmob_22/data/userDao.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                                   fontSize: 50.00, color: homeTextColor),
                             ),
                             Text(
-                              "            Nome do Usuário",
+                              "            Nome do Usuário", // trocar isso aqui para o nome de usuário
                               style: TextStyle(color: homeTextColor),
                             ),
                           ],

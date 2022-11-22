@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:pmob_22/utils/constants.dart';
 
-class ForgottenPassword extends StatelessWidget {
+class ForgottenPassword extends StatefulWidget {
   const ForgottenPassword({Key? key}) : super(key: key);
 
+  @override
+  State<ForgottenPassword> createState() => _ForgottenPasswordState();
+}
+
+class _ForgottenPasswordState extends State<ForgottenPassword> {
+
+  final _formKey = GlobalKey<FormState>();
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

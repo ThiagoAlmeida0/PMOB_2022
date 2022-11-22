@@ -16,7 +16,7 @@ Map<String, WidgetBuilder> routes() {
   routes["/home"] = (context) => const HomeScreen();
   routes["/mathM"] = (context) => const MathMatters();
   routes["/subScreen"] = (context) => const SubjectsScreen();
-  routes["/question"] = (context) => const QuestionScreen();
+  //routes["/question"] = (context) => const QuestionScreen();
 
   return routes;
 }

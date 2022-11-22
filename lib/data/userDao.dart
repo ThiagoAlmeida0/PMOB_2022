@@ -25,9 +25,9 @@ class UserDao {
                   "FROM user "
                   "WHERE email = ? "
                   "AND senha = ?";
-
+        
+              
     var result = await database.rawQuery(sql, [user, password]);
-
     return result.isNotEmpty;
   }
 

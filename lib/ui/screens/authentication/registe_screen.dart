@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pmob_22/ui/widgets/buttons/rounded_app_button.dart';
 import 'package:pmob_22/utils/constants.dart';
+import 'package:pmob_22/data/userDao.dart';
+import 'package:pmob_22/domain/user.dart';
+
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -11,6 +14,12 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _NewUserState extends State<RegisterScreen> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController gradeController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,124 +48,161 @@ class _NewUserState extends State<RegisterScreen> {
       child: Padding(
         padding:
             const EdgeInsets.only(top: 10.0, bottom: 30, left: 50, right: 50),
-        child: Column(
-          children: [
-            const SizedBox(height: 15),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Icon(
-                  Icons.mail_outline,
-                  color: iconColor,
-                ),
-                Text("  E-mail",
-                    style: TextStyle(fontSize: 20, color: textColor))
-              ],
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Insira seu endereço de email aqui",
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: textFieldBackground,
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              const SizedBox(height: 15),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Icon(
+                    Icons.mail_outline,
+                    color: iconColor,
+                  ),
+                  Text("  E-mail",
+                      style: TextStyle(fontSize: 20, color: textColor))
+                ],
               ),
-            ),
-            const SizedBox(height: 15),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Icon(
-                  Icons.lock_outline_sharp,
-                  color: iconColor,
+              const SizedBox(height: 10),
+              TextFormField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  hintText: "Insira seu endereço de email aqui",
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: textFieldBackground,
+                   
                 ),
-                Text("  Senha",
-                    style: TextStyle(fontSize: 20, color: textColor))
-              ],
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Insira sua senha aqui",
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: textFieldBackground,
               ),
-            ),
-            const SizedBox(height: 15),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Icon(
-                  Icons.person,
-                  color: iconColor,
+              const SizedBox(height: 15),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Icon(
+                    Icons.lock_outline_sharp,
+                    color: iconColor,
+                  ),
+                  Text("  Senha",
+                      style: TextStyle(fontSize: 20, color: textColor))
+                ],
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                controller: passwordController,
+                decoration: const InputDecoration(
+                  hintText: "Insira sua senha aqui",
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: textFieldBackground,
                 ),
-                Text("  Nome", style: TextStyle(fontSize: 20, color: textColor))
-              ],
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Insira seu nome aqui",
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: textFieldBackground,
               ),
-            ),
-            const SizedBox(height: 15),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Icon(
-                  FontAwesomeIcons.penClip,
-                  color: iconColor,
+              const SizedBox(height: 15),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Icon(
+                    Icons.person,
+                    color: iconColor,
+                  ),
+                  Text("  Nome", style: TextStyle(fontSize: 20, color: textColor))
+                ],
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  hintText: "Insira seu nome aqui",
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: textFieldBackground,
                 ),
-                Text("  Série",
-                    style: TextStyle(fontSize: 20, color: textColor))
-              ],
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Insira sua série aqui",
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: textFieldBackground,
               ),
-            ),
-            const SizedBox(height: 15),
-            RoundedAppButton(
-                buttonName: "Registrar",
-                buttonColor: ButtonColor,
-                width: 150,
-                height: 50,
-                onTap: () {},
-                textColor: textColor,
-                textSize: 20,
-                buttonRouding: 50),
-            const SizedBox(height: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text("------ Já tem conta? ------",
-                    style: TextStyle(fontSize: 15, color: textColor)),
-              ],
-            ),
-            const SizedBox(height: 25),
-            RoundedAppButton(
-                buttonName: "Ir para Login",
-                buttonColor: ButtonColor,
-                width: 150,
-                height: 50,
-                onTap: () {
-                  Navigator.of(context).pushReplacementNamed("/login");
-                },
-                textColor: textColor,
-                textSize: 20,
-                buttonRouding: 50)
-          ],
+              const SizedBox(height: 15),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Icon(
+                    FontAwesomeIcons.penClip,
+                    color: iconColor,
+                  ),
+                  Text("  Série",
+                      style: TextStyle(fontSize: 20, color: textColor))
+                ],
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                controller: gradeController,
+                decoration: const InputDecoration(
+                  hintText: "Insira sua série aqui",
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: textFieldBackground,
+                ),
+              ),
+              const SizedBox(height: 15),
+              RoundedAppButton(
+                  buttonName: "Registrar",
+                  buttonColor: ButtonColor,
+                  width: 150,
+                  height: 50,
+                  onTap: onTap,
+                  textColor: textColor,
+                  textSize: 20,
+                  buttonRouding: 50),
+              const SizedBox(height: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  Text("------ Já tem conta? ------",
+                      style: TextStyle(fontSize: 15, color: textColor)),
+                ],
+              ),
+              const SizedBox(height: 25),
+              RoundedAppButton(
+                  buttonName: "Ir para Login",
+                  buttonColor: ButtonColor,
+                  width: 150,
+                  height: 50,
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed("/login");
+                  },
+                  textColor: textColor,
+                  textSize: 20,
+                  buttonRouding: 50)
+            ],
+          ),
         ),
       ),
     );
+  }
+   showSnackBar(String msg) {
+    final snackBar = SnackBar(
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.symmetric(
+        vertical: 80,
+        horizontal: 32,
+      ),
+      content: Text(msg),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  onTap() async {
+    if (_formKey.currentState!.validate()) {
+      String emailDigitado = emailController.text;
+      String passwordDigitado = passwordController.text;
+      String nomeDigitado = nameController.text;
+      String serieDigitada = gradeController.text;
+
+      /// SALVAR USUARIO
+      User userCriado = User(email: emailDigitado, senha: passwordDigitado, nome: nomeDigitado, serie: serieDigitada);
+      await UserDao().salvarUser(user: userCriado);
+      showSnackBar('Usuário foi salvo com sucesso!');
+      Navigator.of(context).pushReplacementNamed("/home");     
+
+    } else {
+      showSnackBar("Erro na validação");
+    }
   }
 }
