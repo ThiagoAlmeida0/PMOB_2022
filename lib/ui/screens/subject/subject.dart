@@ -17,7 +17,7 @@ class _SubjectsScreen extends State<SubjectsScreen> {
     HomeScreen(),
     SubjectContent(),
     Center(child: Text(
-      'Working on Progress', style: TextStyle(
+      'Work in on Progress', style: TextStyle(
         fontSize: 40,
       ),
     ),)
@@ -50,6 +50,10 @@ class _SubjectsScreen extends State<SubjectsScreen> {
         onTap: (index){
           if (index == 0){
             Navigator.of(context).pushReplacementNamed("/home");
+          }
+          else if(index == 2){
+           // Navigator.of(context).pushReplacementNamed("/home");
+
           }
           else{
           setState(() {
