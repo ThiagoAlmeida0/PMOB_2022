@@ -11,13 +11,13 @@ import 'package:pmob_22/ui/screens/question/question_screen.dart';
 Map<String, WidgetBuilder> routes() {
   final Map< String,WidgetBuilder> routes = <String, WidgetBuilder>{};
 
-  routes["/login"] = (context) => const LoginScreen();
+  routes["/login"] = (context) => const MathMatters();
   routes["/register"] = (context) => const RegisterScreen();
   routes["/fPass"] = (context) => const ForgottenPassword();
   routes["/home"] = (context) => const HomeScreen();
   routes["/mathM"] = (context) => const MathMatters();
   routes["/subScreen"] = (context) => const SubjectsScreen();
-  //routes["/question"] = (context) => const QuestinScreen();
+  routes["/question"] = (context) =>  QuestionScreen();
 
   return routes;
 }

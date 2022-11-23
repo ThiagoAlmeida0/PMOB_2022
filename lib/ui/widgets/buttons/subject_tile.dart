@@ -17,7 +17,7 @@ class SubjectTile extends StatelessWidget {
         if (materia.id == "11")
             GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed("/question");
+              Navigator.of(context).pushReplacementNamed("/question");
             },
             child: const ListTile(
               title: Text(

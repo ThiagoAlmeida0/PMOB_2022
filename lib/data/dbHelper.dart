@@ -51,7 +51,15 @@ class DBHelper {
     await db.execute(sql);
     sql = "INSERT INTO MATHSUBJECT (id, mName) VALUES ('14', 'Arranjo')";
     await db.execute(sql);
-    sql = "INSERT INTO MATHSUBJECT (id, mName) VALUES ('15', 'Produtos notáveis')";
+    sql =
+        "INSERT INTO MATHSUBJECT (id, mName) VALUES ('15', 'Produtos notáveis')";
+    await db.execute(sql);
+
+    sql =
+        "CREATE TABLE Question (numero varchar(100) PRIMARY KEY, banca varchar(100), enunciado string, a varchar(15), b varchar(15), c varchar(15), d varchar(15), e varchar(15), respostaCorreta varchar(15))";
+    await db.execute(sql);
+    sql =
+        "INSERT INTO Question (numero, banca, ano, enunciado, a, b, c, d, e, respostaCorreta) VALUES ('Questão 300', 'FUVEST', 'O valor de (0,2)3 + (0,16)2 é:', 'a) 0,0264', 'b) 0,0336', 'c) 0,1056', 'd) 0,2568', 'e) 0,6256', 'aa')";
     await db.execute(sql);
   }
 
