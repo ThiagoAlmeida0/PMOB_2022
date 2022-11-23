@@ -52,7 +52,7 @@ class _SubjectsScreen extends State<SubjectsScreen> {
             Navigator.of(context).pushReplacementNamed("/home");
           }
           else if(index == 2){
-           // Navigator.of(context).pushReplacementNamed("/home");
+           Navigator.of(context).pushNamed("/perfil");
 
           }
           else{
