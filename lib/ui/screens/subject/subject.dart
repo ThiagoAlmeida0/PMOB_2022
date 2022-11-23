@@ -4,6 +4,7 @@ import 'package:pmob_22/ui/screens/home/home_screen.dart';
 import 'package:pmob_22/ui/screens/subject/subjects_content.dart';
 import 'package:pmob_22/utils/constants.dart';
 
+
 class SubjectsScreen extends StatefulWidget {
   const SubjectsScreen({Key? key}) : super(key: key);
 
@@ -52,8 +53,7 @@ class _SubjectsScreen extends State<SubjectsScreen> {
             Navigator.of(context).pushReplacementNamed("/home");
           }
           else if(index == 2){
-           // Navigator.of(context).pushReplacementNamed("/home");
-
+           Navigator.of(context).pushReplacementNamed("/perfil");
           }
           else{
           setState(() {
