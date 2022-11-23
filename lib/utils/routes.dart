@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pmob_22/domain/questions.dart';
 import 'package:pmob_22/ui/screens/authentication/forgotten_pass.dart';
 import 'package:pmob_22/ui/screens/authentication/login_screen.dart';
 import 'package:pmob_22/ui/screens/authentication/registe_screen.dart';
@@ -16,7 +17,7 @@ Map<String, WidgetBuilder> routes() {
   routes["/home"] = (context) => const HomeScreen();
   routes["/mathM"] = (context) => const MathMatters();
   routes["/subScreen"] = (context) => const SubjectsScreen();
-  //routes["/question"] = (context) => const QuestionScreen();
+  //routes["/question"] = (context) => const QuestinScreen();
 
   return routes;
 }
