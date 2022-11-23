@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pmob_22/ui/widgets/buttons/subject_tile.dart';
 import 'package:pmob_22/utils/constants.dart';
+
+import '../../../data/mathSubjectDB.dart';
+import '../../../domain/mathSubject_domain.dart';
 
 class MathMatters extends StatefulWidget {
   const MathMatters({Key? key}) : super(key: key);
@@ -22,103 +26,38 @@ class _MathMattersState extends State<MathMatters> {
       ),
       body: ListView(
         children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed("/question");
-            },
-            child: const ListTile(
-              title: Text(
-                'Potenciação',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          const Divider(
-            color: mainColor,
-            thickness: 2,
-            indent: 14,
-            endIndent: 14,
-          ),
-          const ListTile(
-            title: Text(
-              'Radiciação',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const Divider(
-            color: mainColor,
-            thickness: 2,
-            indent: 14,
-            endIndent: 14,
-          ),
-          const ListTile(
-            title: Text(
-              'MMC e MDC',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const Divider(
-            color: mainColor,
-            thickness: 2,
-            indent: 14,
-            endIndent: 14,
-          ),
-          const ListTile(
-            title: Text(
-              'Regra de três',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text(
-              'Simples e composta',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          const Divider(
-            color: mainColor,
-            thickness: 2,
-            indent: 14,
-            endIndent: 14,
-          ),
-          const ListTile(
-            title: Text(
-              'Produtos notáveis',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const Divider(
-            color: mainColor,
-            thickness: 2,
-            indent: 14,
-            endIndent: 14,
-          ),
-          const ListTile(
-            title: Text(
-              'Função afim',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const Divider(
-            color: mainColor,
-            thickness: 2,
-            indent: 14,
-            endIndent: 14,
-          ),
-          const ListTile(
-            title: Text(
-              'Função quadrática',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const Divider(
-            color: mainColor,
-            thickness: 2,
-            indent: 14,
-            endIndent: 14,
-          ),
+          buildListView()
         ],
       ),
     );
+  }
+
+  buildListView() {
+    Future<List<MathSubjet>> futureList = SubjectDao().listaDeSubjects();
+
+    return FutureBuilder<List<MathSubjet>>(
+      future: futureList,
+      builder: (context, snapshot) {
+
+        if(snapshot.hasData){
+          List<MathSubjet> subjectsList = snapshot.data ?? [];
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: subjectsList.length,
+            itemBuilder: (context, index) {
+              return SubjectTile(
+                materia: subjectsList[index],
+              );
+            },
+          );
+        }
+
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+
+
   }
 }
