@@ -7,6 +7,7 @@ import 'package:pmob_22/ui/screens/home/home_screen.dart';
 import 'package:pmob_22/ui/screens/subject/subject.dart';
 import 'package:pmob_22/ui/screens/subject/math_matters.dart';
 import 'package:pmob_22/ui/screens/question/question_screen.dart';
+import 'package:pmob_22/ui/screens/authentication/perfil.dart';
 
 Map<String, WidgetBuilder> routes() {
   final Map< String,WidgetBuilder> routes = <String, WidgetBuilder>{};
@@ -17,6 +18,7 @@ Map<String, WidgetBuilder> routes() {
   routes["/home"] = (context) => const HomeScreen();
   routes["/mathM"] = (context) => const MathMatters();
   routes["/subScreen"] = (context) => const SubjectsScreen();
+  routes["/perfil"] = (context) => const Perfil();
   //routes["/question"] = (context) => const QuestinScreen();
 
   return routes;

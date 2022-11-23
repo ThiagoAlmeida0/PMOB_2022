@@ -146,7 +146,10 @@ class HomeScreen extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                          Navigator.of(context).pushNamed("/perfil");
+
+                      },
                       child: const Text("Meus dados pessoais"),
                     ),
                   ),

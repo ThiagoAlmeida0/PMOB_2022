@@ -5,7 +5,6 @@ import 'package:pmob_22/utils/constants.dart';
 import 'package:pmob_22/data/userDao.dart';
 import 'package:pmob_22/domain/user.dart';
 
-
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
@@ -19,7 +18,7 @@ class _NewUserState extends State<RegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController gradeController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +71,6 @@ class _NewUserState extends State<RegisterScreen> {
                   border: OutlineInputBorder(),
                   filled: true,
                   fillColor: textFieldBackground,
-                   
                 ),
               ),
               const SizedBox(height: 15),
@@ -89,7 +87,17 @@ class _NewUserState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 10),
               TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo senha obrigatório';
+                  } else if (value.length < 6) {
+                    return 'Senha deve possuir no mínimo 6 dígitos';
+                  }
+
+                  return null;
+                },
                 controller: passwordController,
+                obscureText: true,
                 decoration: const InputDecoration(
                   hintText: "Insira sua senha aqui",
                   border: OutlineInputBorder(),
@@ -105,7 +113,8 @@ class _NewUserState extends State<RegisterScreen> {
                     Icons.person,
                     color: iconColor,
                   ),
-                  Text("  Nome", style: TextStyle(fontSize: 20, color: textColor))
+                  Text("  Nome",
+                      style: TextStyle(fontSize: 20, color: textColor))
                 ],
               ),
               const SizedBox(height: 10),
@@ -176,7 +185,8 @@ class _NewUserState extends State<RegisterScreen> {
       ),
     );
   }
-   showSnackBar(String msg) {
+
+  showSnackBar(String msg) {
     final snackBar = SnackBar(
       behavior: SnackBarBehavior.floating,
       margin: const EdgeInsets.symmetric(
@@ -196,11 +206,14 @@ class _NewUserState extends State<RegisterScreen> {
       String serieDigitada = gradeController.text;
 
       /// SALVAR USUARIO
-      User userCriado = User(email: emailDigitado, senha: passwordDigitado, nome: nomeDigitado, serie: serieDigitada);
+      User userCriado = User(
+          email: emailDigitado,
+          senha: passwordDigitado,
+          nome: nomeDigitado,
+          serie: serieDigitada);
       await UserDao().salvarUser(user: userCriado);
       showSnackBar('Usuário foi salvo com sucesso!');
-      Navigator.of(context).pushReplacementNamed("/home");     
-
+      Navigator.of(context).pushReplacementNamed("/home");
     } else {
       showSnackBar("Erro na validação");
     }
