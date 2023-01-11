@@ -1,12 +1,11 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pmob_22/data/cpf_api.dart';
 import 'package:pmob_22/ui/widgets/buttons/rounded_app_button.dart';
 import 'package:pmob_22/utils/constants.dart';
 import 'package:pmob_22/data/userDao.dart';
 import 'package:pmob_22/domain/user.dart';
-import 'package:http/http.dart' as http; 
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../../../data/address_api.dart';
@@ -27,7 +26,7 @@ class _NewUserState extends State<RegisterScreen> {
   TextEditingController gradeController = TextEditingController();
   TextEditingController cepController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-  
+  TextEditingController cpfController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -123,15 +122,26 @@ class _NewUserState extends State<RegisterScreen> {
                     Icons.person,
                     color: iconColor,
                   ),
-                  Text("  Nome",
+                  Text("  Informações pessoais",
                       style: TextStyle(fontSize: 20, color: textColor))
                 ],
               ),
               const SizedBox(height: 10),
               TextFormField(
+                controller: cpfController,
+                onEditingComplete: onEditingCpf,
+                decoration: const InputDecoration(
+                  hintText: "Insira seu cpf aqui",
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: textFieldBackground,
+                ),
+              ),
+              const SizedBox(height: 5),
+              TextFormField(
                 controller: nameController,
                 decoration: const InputDecoration(
-                  hintText: "Insira seu nome aqui",
+                  hintText: "Nome",
                   border: OutlineInputBorder(),
                   filled: true,
                   fillColor: textFieldBackground,
@@ -159,7 +169,7 @@ class _NewUserState extends State<RegisterScreen> {
                   fillColor: textFieldBackground,
                 ),
               ),
-
+              const SizedBox(height: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
@@ -167,7 +177,7 @@ class _NewUserState extends State<RegisterScreen> {
                     FontAwesomeIcons.house,
                     color: iconColor,
                   ),
-                  Text("  CEP",
+                  Text("  Endereço",
                       style: TextStyle(fontSize: 20, color: textColor))
                 ],
               ),
@@ -182,7 +192,7 @@ class _NewUserState extends State<RegisterScreen> {
 
                   return null;
                 },
-                onEditingComplete: onEditingComplete,
+                onEditingComplete: onEditingCep,
                 decoration: const InputDecoration(
                   hintText: "Insira apenas os números do seu CEP",
                   border: OutlineInputBorder(),
@@ -190,8 +200,8 @@ class _NewUserState extends State<RegisterScreen> {
                   fillColor: textFieldBackground,
                 ),
               ),
-
-               TextFormField(
+              const SizedBox(height: 5),
+              TextFormField(
                 controller: addressController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -206,12 +216,7 @@ class _NewUserState extends State<RegisterScreen> {
                   filled: true,
                   fillColor: textFieldBackground,
                 ),
-               
               ),
-
-            
-
-
               const SizedBox(height: 15),
               RoundedAppButton(
                   buttonName: "Registrar",
@@ -280,12 +285,17 @@ class _NewUserState extends State<RegisterScreen> {
     } else {
       showSnackBar("Erro na validação");
     }
-
   }
-  Future<void> onEditingComplete() async {
+
+  Future<void> onEditingCep() async {
     Address address = await AddressApi().findAddressByCep(cepController.text);
 
     addressController.text = address.logradouro;
   }
-  
+
+  Future<void> onEditingCpf() async {
+    var response = await CpfApi().validarCPF(cpfController.text);
+
+    nameController.text = response['nome'];
+  }
 }
