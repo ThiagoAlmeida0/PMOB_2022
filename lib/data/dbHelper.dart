@@ -21,8 +21,7 @@ class DBHelper {
         "CREATE TABLE user (email varchar(100) PRIMARY KEY, senha varchar(100), nome varchar(100), serie varchar(15), cep varchar(8), endereco varchar(200), cpf varchar(11))";
     await db.execute(sql);
 
-    sql =
-        'CREATE TABLE MATHSUBJECT (id varchar(10) PRIMARY KEY, mName varchar(100))';
+    sql =  'CREATE TABLE MATHSUBJECT (id varchar(10) PRIMARY KEY, mName varchar(100))';
     await db.execute(sql);
 
     sql = "INSERT INTO MATHSUBJECT (id, mName) VALUES ('11', 'Potenciacão')";
@@ -41,6 +40,7 @@ class DBHelper {
         "CREATE TABLE Question (numero varchar(100) PRIMARY KEY, banca varchar(100), ano var (4), enunciado varchar (1000), a varchar(15), b varchar(15), c varchar(15), d varchar(15), e varchar(15), respostaCorreta varchar(15))";
     sql =
         "INSERT INTO Question (numero, banca, ano, enunciado, a, b, c, d, e, respostaCorreta) VALUES ('Questão 300', 'FUVEST', '2013', 'O valor de (0,2)3 + (0,16)2 é:', 'a) 0,0264', 'b) 0,0336', 'c) 0,1056', 'd) 0,2568', 'e) 0,6256', 'aa')";
+   
   }
 
   Future<FutureOr<void>> onUpgrade(
