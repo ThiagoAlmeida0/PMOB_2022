@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Icons.lock_outline_sharp,
                     color: iconColor,
                   ),
-                  Text("Insira sua senha aqui",
+                  Text("Senha",
                       style: TextStyle(fontSize: 20, color: textColor))
                 ],
               ),
