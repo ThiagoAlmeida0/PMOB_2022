@@ -6,6 +6,7 @@ class User{
   String? nome;
   String? serie;
 
+
   User({this.email, this.senha, this.nome, this.serie});
 
   User.fromJson(Map<String, dynamic> json) {
@@ -13,6 +14,7 @@ class User{
     senha = json['senha'];
     nome = json['nome'];
     serie = json['serie'];
+
     
   }
 

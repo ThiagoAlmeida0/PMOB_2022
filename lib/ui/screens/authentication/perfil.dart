@@ -46,7 +46,7 @@ class _PerfilState extends State<Perfil> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed("/login");
+                    Navigator.of(context).pushNamed("/login");
                   },
                   child: Text("Logout"))
             ],

@@ -1,9 +1,16 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pmob_22/ui/widgets/buttons/rounded_app_button.dart';
 import 'package:pmob_22/utils/constants.dart';
 import 'package:pmob_22/data/userDao.dart';
 import 'package:pmob_22/domain/user.dart';
+import 'package:http/http.dart' as http; 
+import 'dart:convert';
+
+import '../../../data/address_api.dart';
+import '../../../domain/address.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -18,6 +25,9 @@ class _NewUserState extends State<RegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController gradeController = TextEditingController();
+  TextEditingController cepController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +159,59 @@ class _NewUserState extends State<RegisterScreen> {
                   fillColor: textFieldBackground,
                 ),
               ),
+
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Icon(
+                    FontAwesomeIcons.house,
+                    color: iconColor,
+                  ),
+                  Text("  CEP",
+                      style: TextStyle(fontSize: 20, color: textColor))
+                ],
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                controller: cepController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo obrigatório';
+                  }
+
+                  return null;
+                },
+                onEditingComplete: onEditingComplete,
+                decoration: const InputDecoration(
+                  hintText: "Insira apenas os números do seu CEP",
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: textFieldBackground,
+                ),
+              ),
+
+               TextFormField(
+                controller: addressController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo obrigatório';
+                  }
+
+                  return null;
+                },
+                decoration: const InputDecoration(
+                  hintText: "Endereço",
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: textFieldBackground,
+                ),
+               
+              ),
+
+            
+
+
               const SizedBox(height: 15),
               RoundedAppButton(
                   buttonName: "Registrar",
@@ -217,5 +280,12 @@ class _NewUserState extends State<RegisterScreen> {
     } else {
       showSnackBar("Erro na validação");
     }
+
   }
+  Future<void> onEditingComplete() async {
+    Address address = await AddressApi().findAddressByCep(cepController.text);
+
+    addressController.text = address.logradouro;
+  }
+  
 }
