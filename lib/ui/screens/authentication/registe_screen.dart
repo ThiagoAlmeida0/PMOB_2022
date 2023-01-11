@@ -272,13 +272,19 @@ class _NewUserState extends State<RegisterScreen> {
       String passwordDigitado = passwordController.text;
       String nomeDigitado = nameController.text;
       String serieDigitada = gradeController.text;
+      String cpfDigitado = cpfController.text;
+      String cepDigitado = cepController.text;
+      String enderecoDigitado = addressController.text;
 
       /// SALVAR USUARIO
       User userCriado = User(
           email: emailDigitado,
           senha: passwordDigitado,
           nome: nomeDigitado,
-          serie: serieDigitada);
+          serie: serieDigitada,
+          cep: cepDigitado,
+          endereco: enderecoDigitado,
+          cpf: cpfDigitado);
       await UserDao().salvarUser(user: userCriado);
       showSnackBar('Usuário foi salvo com sucesso!');
       Navigator.of(context).pushReplacementNamed("/home");

@@ -9,7 +9,7 @@ class DBHelper {
 
     Database db = await openDatabase(
       dbPath,
-      version: 1,
+      version: 2,
       onCreate: onCreate,
     );
     print(dbPath);
@@ -17,9 +17,8 @@ class DBHelper {
   }
 
   Future<FutureOr<void>> onCreate(Database db, int version) async {
-    
     String sql =
-      "CREATE TABLE user (email varchar(100) PRIMARY KEY, senha varchar(100), nome varchar(100), serie varchar(15))";
+        "CREATE TABLE user (email varchar(100) PRIMARY KEY, senha varchar(100), nome varchar(100), serie varchar(15), cep varchar(8), endereco varchar(200), cpf varchar(11))";
     await db.execute(sql);
 
     sql =
@@ -39,11 +38,9 @@ class DBHelper {
     await db.execute(sql);
 
     sql =
-        "CREATE TABLE Question (numero varchar(100) PRIMARY KEY, banca varchar(100), enunciado string, a varchar(15), b varchar(15), c varchar(15), d varchar(15), e varchar(15), respostaCorreta varchar(15))";
-    await db.execute(sql);
+        "CREATE TABLE Question (numero varchar(100) PRIMARY KEY, banca varchar(100), ano var (4), enunciado varchar (1000), a varchar(15), b varchar(15), c varchar(15), d varchar(15), e varchar(15), respostaCorreta varchar(15))";
     sql =
-        "INSERT INTO Question (numero, banca, ano, enunciado, a, b, c, d, e, respostaCorreta) VALUES ('Questão 300', 'FUVEST', 'O valor de (0,2)3 + (0,16)2 é:', 'a) 0,0264', 'b) 0,0336', 'c) 0,1056', 'd) 0,2568', 'e) 0,6256', 'aa')";
-    await db.execute(sql);
+        "INSERT INTO Question (numero, banca, ano, enunciado, a, b, c, d, e, respostaCorreta) VALUES ('Questão 300', 'FUVEST', '2013', 'O valor de (0,2)3 + (0,16)2 é:', 'a) 0,0264', 'b) 0,0336', 'c) 0,1056', 'd) 0,2568', 'e) 0,6256', 'aa')";
   }
 
   Future<FutureOr<void>> onUpgrade(
